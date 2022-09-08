@@ -1,5 +1,5 @@
 import create from "zustand";
-import { persist } from "zustand/middleware";
+import { devtools, persist } from "zustand/middleware";
 import axios from "axios";
 import { BASE_URL } from "../utils";
 
@@ -15,8 +15,8 @@ const authStore = (set: any) => ({
 });
 
 const useAuthStore = create(
-  persist(authStore, {
-    name: "auth",
-  })
+ devtools( persist(authStore, {
+  name: "auth",
+}))
 );
 export default useAuthStore;
